@@ -1,11 +1,18 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
+import Search from "./Search";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+import "./index.css";
+
+const AppRoutes = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/search" element={<Search />} />
+    </Routes>
+  </Router>
 );
+
+ReactDOM.render(<AppRoutes />, document.getElementById("root"));
