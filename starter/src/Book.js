@@ -7,11 +7,12 @@ const Book = (props) => {
   const handleChange = (event) => {
     if (!isSearching) {
       if (event !== "shelf") {
-        BooksAPI.update(book, event).then((response) =>
-          BooksAPI.getAll().then((newBooks) => {
-            setBooks(newBooks);
-          })
-        );
+        BooksAPI.update(book, event).then(() => {
+          setBooks((prevBooks) => [
+            ...prevBooks.filter((b) => b.id !== book.id),
+            { ...book, shelf: event },
+          ]);
+        });
       }
     } else {
       if (event !== "shelf") {

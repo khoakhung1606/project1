@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Bookshelf from "./Bookshelf";
 import * as BooksAPI from "./BooksAPI";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -12,7 +12,6 @@ const App = () => {
     { title: "Read", shelfName: "read" },
   ];
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     BooksAPI.getAll().then((booksFromApi) => {
@@ -43,7 +42,7 @@ const App = () => {
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => navigate("/search")}>Add a book</a>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     </div>

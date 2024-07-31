@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Book from "./Book";
 
@@ -9,7 +9,7 @@ import * as BooksAPI from "./BooksAPI";
 const Search = (props) => {
   const [searchText, setSearchText] = useState("");
   const [searchBooks, setSearchBooks] = useState([]);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     if (searchText.length !== 0) {
@@ -41,7 +41,7 @@ const Search = (props) => {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <button className="close-search" onClick={() => navigate("/")}>
+        <button className="close-search" onClick={() => history.push("/")}>
           Close
         </button>
         <div className="search-books-input-wrapper">
